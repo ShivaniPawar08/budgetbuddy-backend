@@ -12,7 +12,10 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/budget")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {
+    "http://localhost:3000",
+    "https://shivani-pawar.onrender.com"
+})
 public class BudgetController {
 
     @Autowired

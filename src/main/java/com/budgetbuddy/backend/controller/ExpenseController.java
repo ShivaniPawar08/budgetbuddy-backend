@@ -15,7 +15,10 @@ import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/expense")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {
+    "http://localhost:3000",
+    "https://shivani-pawar.onrender.com"
+})
 public class ExpenseController {
 
     @Autowired
