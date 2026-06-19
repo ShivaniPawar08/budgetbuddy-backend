@@ -9,7 +9,7 @@ import java.util.Optional;
 @RequestMapping("/auth")
 @CrossOrigin(origins = {
     "http://localhost:3000",
-    "https://your-frontend-render-url.onrender.com"
+    "https://shivani-pawar.onrender.com"
 })
 
 public class AuthController {
