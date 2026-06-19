@@ -224,9 +224,11 @@ public Map<String, Double> monthlyTrend(@RequestParam Long userId) {
 @GetMapping("/weekly-trend")
 public Map<String, Double> weeklyTrend(@RequestParam Long userId) {
 
-    List<Expense> expenses = expenseRepository.findByUser_Id(userId);
+    List<Expense> expenses =
+            expenseRepository.findByUser_Id(userId);
 
-    Map<String, Double> map = new LinkedHashMap<>();
+    Map<String, Double> map =
+            new LinkedHashMap<>();
 
     map.put("Mon", 0.0);
     map.put("Tue", 0.0);
@@ -237,11 +239,27 @@ public Map<String, Double> weeklyTrend(@RequestParam Long userId) {
     map.put("Sun", 0.0);
 
     for (Expense e : expenses) {
+
         if (e.getDate() == null) continue;
 
-        String day = e.getDate().getDayOfWeek().toString().substring(0, 3);
+        String day =
+                e.getDate()
+                 .getDayOfWeek()
+                 .name()
+                 .substring(0,1)
+                 .toUpperCase()
+                 +
+                e.getDate()
+                 .getDayOfWeek()
+                 .name()
+                 .substring(1,3)
+                 .toLowerCase();
 
-        map.put(day, map.getOrDefault(day, 0.0) + e.getAmount());
+        map.put(
+                day,
+                map.getOrDefault(day, 0.0)
+                        + e.getAmount()
+        );
     }
 
     return map;
